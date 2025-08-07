@@ -1,5 +1,92 @@
 import { GraphBase } from "./graphBase.js";
 
+export function initializeSettings(overrideSettings = {}) {
+	// Default settings
+	//const smallScreenDEL = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent, );
+	const smallScreen =
+		typeof navigator !== "undefined" &&
+		/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
+	let defaultSettings = {
+		spectrum: {
+			margin: smallScreen
+				? { top: 50, right: 10, bottom: 30, left: 10 }
+				: { top: 10, right: 30, bottom: 30, left: 60 },
+			bodyWidth: 800,
+			bodyHeight: smallScreen ? 1000 : 450,
+			lineWidth: smallScreen ? 5 : 1.5,
+			darkMode: false,
+			smallScreen: smallScreen,
+		},
+	};
+
+	// Merge default settings with overrides
+	let settings = { ...defaultSettings, ...overrideSettings };
+
+	// Calculate derived values
+	settings.spectrum.widthOfThePlot =
+		settings.spectrum.bodyWidth -
+		settings.spectrum.margin.left -
+		settings.spectrum.margin.right;
+	settings.spectrum.height =
+		settings.spectrum.bodyHeight -
+		settings.spectrum.margin.top -
+		settings.spectrum.margin.bottom;
+
+	return settings;
+}
+
+export function createSVG(dataviz, settings) {
+	return (
+		d3
+			.select("#" + dataviz)
+			.append("svg")
+			// 1. Set viewBox first — defines internal coordinate system
+			.attr(
+				"viewBox",
+				`0 0 ${
+					settings.spectrum.widthOfThePlot +
+					settings.spectrum.margin.left +
+					settings.spectrum.margin.right
+				} ${
+					settings.spectrum.height +
+					settings.spectrum.margin.top +
+					settings.spectrum.margin.bottom
+				}`
+			)
+			.style("display", "block")
+			.attr(
+				"width",
+				settings.spectrum.widthOfThePlot +
+					settings.spectrum.margin.left +
+					settings.spectrum.margin.right
+			)
+			.attr(
+				"height",
+				settings.spectrum.height +
+					settings.spectrum.margin.top +
+					settings.spectrum.margin.bottom
+			)
+			/*
+			.attr("preserveAspectRatio", "xMinYMid meet") // adjust how viewBox scales
+			.style("width", "100%")
+			.style("height", "auto")
+			*/
+			//.style("border", "1px solid black") // Add a black border around the SVG
+			//.style("background-color", "lightblue") // Set the background color
+			.append("g")
+			.attr(
+				"transform",
+				"translate(" +
+					settings.spectrum.margin.left +
+					"," +
+					settings.spectrum.margin.top +
+					")"
+			)
+	);
+}
+
 export class NmrSpectrum extends GraphBase {
 	constructor(
 		chemShiftsInput,
