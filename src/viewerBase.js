@@ -1,6 +1,6 @@
 // Comment /un comment last line for mode/Browser usage 
  
- class GraphBase {
+ class ViewerBase {
   constructor(name, options = {}) {
     // Initialize core properties
     this.name = name;

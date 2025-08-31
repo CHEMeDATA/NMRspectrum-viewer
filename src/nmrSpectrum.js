@@ -1,4 +1,5 @@
-import { GraphBase } from "./graphBase.js";
+import { ViewerBase } from "./viewerBase.js";
+import { NMRspectrumObject } from './nmrSpectrumObject.js'; // object
 
 export function initializeSettings(overrideSettings = {}) {
 	// Default settings
@@ -87,7 +88,7 @@ export function createSVG(dataviz, settings) {
 	);
 }
 
-export class NmrSpectrum extends GraphBase {
+export class NmrSpectrum extends ViewerBase {
 	constructor(
 		chemShiftsInput,
 		svg,
@@ -96,7 +97,7 @@ export class NmrSpectrum extends GraphBase {
 		regionsData = {},
 		name = "nameIsWiredInConstructor_NmrSpectrum1"
 	) {
-		// data for GraphBase which takes care of communication between classes
+		// data for ViewerBase which takes care of communication between classes
 		super(name, {
 			dataTypesSend: ["xAxisSpectrum"],
 			dataTypesReceive: [
@@ -298,6 +299,44 @@ export class NmrSpectrum extends GraphBase {
 		};
 		this.jgraphObj = jgraphObj;
 	}
+
+// NSKEA not viewer specific, object specific
+		static getProperDataForVisualization(inputData, objClassName) {
+
+			if (objClassName == "setSpectra") { // do not remove automatic code...
+				const nMRspectraObjectsDemo = [
+				   new NMRspectrumObject({demo : {arrayLorentzian : {
+							centers: [7.27, 5.0, 0.0],
+							widthsInHz: [0.7, 0.7, 0.7],
+							amplitudes: [1, 10, 1],
+						}}}), 
+				    new NMRspectrumObject({demo : {
+					    spectralData:{firstPoint:9}, 
+					    arrayLorentzian:{centers:[3.8]}}
+				    })
+				]; 
+
+				 return [
+					new NMRspectrumObject({},inputData.obj.members[0]), 
+					new NMRspectrumObject({},inputData.obj.members[1])
+				]; 
+			} 
+			if (objClassName == "nmrSpectrum") { // do not remove automatic code...
+				const nMRspectraObjectsDemo = [
+				   new NMRspectrumObject({demo : {arrayLorentzian : {
+							centers: [7.27, 5.0, 0.0],
+							widthsInHz: [0.7, 0.7, 0.7],
+							amplitudes: [1, 10, 1],
+						}}})
+				]; 
+					
+
+			return [
+					new NMRspectrumObject({},inputData.obj)
+				]; 
+			}
+		}
+		// NSKEA end not viewer specific, object specific
 
 	highlightSpectrum(index, higlightOrUnHighlight, col = "green") {
 		console.log(
