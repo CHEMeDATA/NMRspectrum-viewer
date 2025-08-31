@@ -92,11 +92,16 @@ export class NmrSpectrum extends ViewerBase {
 	constructor(
 		chemShiftsInput,
 		svg,
-		settingsInput,
+		settingsInput = {},
 		smallScreen = false,
 		regionsData = {},
 		name = "nameIsWiredInConstructor_NmrSpectrum1"
 	) {
+		if (Object.keys(settingsInput).length === 0) {
+			settingsInput =  initializeSettings({});
+			smallScreen = settingsInput.smallScreen;
+		}
+
 		// data for ViewerBase which takes care of communication between classes
 		super(name, {
 			dataTypesSend: ["xAxisSpectrum"],
