@@ -1,6 +1,7 @@
 {
 	"listObject": [
 	{
+	"object": "",
 	"type": "viewer",
 	"class": "NmrSpectrum",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
@@ -17,6 +18,7 @@
 		]
 	},
 	{
+	"object": "",
 	"type": "viewer",
 	"class": "NmrAssignment",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
@@ -46,6 +48,7 @@
 	]
 	},
 	{	
+	"object": "",
 	"type": "viewer",
 	"class": "JgraphViewer",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
