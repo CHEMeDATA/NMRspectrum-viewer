@@ -15,3 +15,9 @@ cp /Users/djeanner/git/MnovaJson-reader/src/assignedCouplings.js src/
 cp /Users/djeanner/git/MnovaJson-reader/src/getJgraphColor.js src/
 cp /Users/djeanner/git/MnovaJson-reader/src/jmolInterface.js src/
 cp /Users/djeanner/git/MnovaJson-reader/src/getJisOK.js src/
+
+
+
+mkdir -p html
+cp /Users/djeanner/git/schema/html/jGraphObject.html html
+node hidden/install.js all html/src
