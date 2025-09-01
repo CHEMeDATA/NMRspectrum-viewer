@@ -1,16 +1,15 @@
 {
 	"listObject": [
 	{
-	"object": "",
+	"object": "NmrSpectrum",
 	"type": "viewer",
-	"class": "NmrSpectrum",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
 		"src/nmrSpectrum.js"
 		],
 	"jsLibrary": [
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/nmrSpectrum.js"},
-		{"repository":"CHEMeDATA/schema" , "fileName": "html/src_objects/nmrSpectrumObject.js"}
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrSpectrum.js", "include": "NmrSpectrum"},
+		{"repository":"CHEMeDATA/schema", "fileName": "html/src_objects/nmrSpectrumObject.js"}
 	],
 	"listObjectSchema": [ 
 		"nmrSpectrumObject", 
@@ -18,9 +17,8 @@
 		]
 	},
 	{
-	"object": "",
+	"object": "NmrAssignment",
 	"type": "viewer",
-	"class": "NmrAssignment",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
 		"src/nmrAssignement.js", 
@@ -33,24 +31,23 @@
 		"src/getJisOK.js"
 	],
 	"jsLibrary": [
-		{"repository":"CHEMeDATA/viewers-base" , "fileName": "src/viewerBase.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/nmrAssignement.js"},
-		{"repository":"CHEMeDATA/schema" , "fileName": "html/src_objects/nmrSpectrum.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateColumnsPositions.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateColumnsAction.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateBlockPosition.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/assignedCouplings.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/getJgraphColor.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/jmolInterface.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/getJisOK.js"}
+		{"repository":"CHEMeDATA/viewers-base", "fileName": "src/viewerBase.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrAssignement.js"},
+		{"repository":"CHEMeDATA/schema", "fileName": "html/src_objects/nmrSpectrum.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateColumnsPositions.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateColumnsAction.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateBlockPosition.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/assignedCouplings.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/getJgraphColor.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/jmolInterface.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/getJisOK.js"}
 	],
 	"listObjectSchema": [ 
 	]
 	},
 	{	
-	"object": "",
+	"object": "JgraphViewer",
 	"type": "viewer",
-	"class": "JgraphViewer",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
 		"src/jGraphViewer.js", 
@@ -58,18 +55,18 @@
 		"src/nmrAssignement.js"
 		],
 	"jsLibrary": [
-		{"repository":"CHEMeDATA/viewers-base" , "fileName": "src/viewerBase.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/jGraphViewer.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/nmrSpectrum.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/nmrAssignement.js"},
-		{"repository":"CHEMeDATA/nmr-objects" , "fileName": "dist/jGraphObject.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateColumnsPositions.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateColumnsAction.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/updateBlockPosition.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/assignedCouplings.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/getJgraphColor.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/jmolInterface.js"},
-		{"repository":"CHEMeDATA/NMRspectrum-viewer" , "fileName": "src/getJisOK.js"}
+		{"repository":"CHEMeDATA/viewers-base", "fileName": "src/viewerBase.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/jGraphViewer.js", "include" : "JgraphViewer"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrSpectrum.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrAssignement.js"},
+		{"repository":"CHEMeDATA/nmr-objects", "fileName": "dist/jGraphObject.js", "include": "JgraphObject"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateColumnsPositions.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateColumnsAction.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/updateBlockPosition.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/assignedCouplings.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/getJgraphColor.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/jmolInterface.js"},
+		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/getJisOK.js"}
 	],
 	"listObjectSchema": [
 		"jGraphObject"
