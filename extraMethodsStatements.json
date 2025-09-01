@@ -1,6 +1,7 @@
-
-[
+{
+	"listObject": [
 	{
+	"type": "viewer",
 	"class": "NmrSpectrum",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
@@ -13,9 +14,10 @@
 	"listObjectSchema": [ 
 		"nmrSpectrumObject", 
 		"setSpectra"
-	]
-},
-{
+		]
+	},
+	{
+	"type": "viewer",
 	"class": "NmrAssignment",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
@@ -42,8 +44,9 @@
 	],
 	"listObjectSchema": [ 
 	]
-},
-{	
+	},
+	{	
+	"type": "viewer",
 	"class": "JgraphViewer",
 	"repository": "CHEMeDATA/NMRspectrum-viewer",
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
@@ -70,3 +73,4 @@
 	]
 }
 ]
+}

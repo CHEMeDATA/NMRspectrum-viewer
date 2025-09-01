@@ -1,13 +1,13 @@
 // ===================== CONFIG =====================
-// copy libraries
+// // copy libraries
+
 const GITHUB_BASE = 'https://raw.githubusercontent.com';
 // ===================================================
 
 const fs = require('fs');
 const path = require('path');
 
-// Load your JSON data
-const data = require('../src/extraMethodsStatements.json'); // Path to your JSON file
+const data = require('../extraMethodsStatements.json'); // Must be the new structure
 
 // Get parameters: mode + target folder
 const mode = process.argv[2] || 'all';
@@ -29,6 +29,8 @@ async function downloadFile(url, destPath) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to download ${url}: ${res.statusText}`);
     const content = await res.text();
+    // Ensure subfolders if present in fileName
+   // fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.writeFileSync(destPath, content, 'utf8');
     console.log(`✅ Downloaded: ${url} → ${destPath}`);
   } catch (err) {
@@ -38,7 +40,9 @@ async function downloadFile(url, destPath) {
 
 // Main: loop over JSON and download
 async function processLibraries() {
-  for (const item of data) {
+  const objects = data.listObject || [];
+
+  for (const item of objects) {
     for (const lib of item.jsLibrary) {
       const { repository, fileName } = lib;
 
@@ -46,6 +50,7 @@ async function processLibraries() {
       if (mode === 'all' || repository !== item.repository) {
         const url = `${GITHUB_BASE}/${repository}/main/${fileName}`;
         const destPath = path.join(SRC_DIR, path.basename(fileName));
+        //const destPath = path.join(SRC_DIR, fileName); // preserve folder structure
         await downloadFile(url, destPath);
       }
     }
