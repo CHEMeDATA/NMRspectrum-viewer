@@ -21,7 +21,7 @@
   <div id="my_dataviz" style="width: 100%; height: auto;">
   <script type="module">
 
-    import { NMRspectrumObject } from "../src/NMRspectrumObject.js";
+    import { NMRspectrumObject } from "./src/NMRspectrumObject.js";
 
    const nMRspectraObjects = [
    new NMRspectrumObject({demo : {arrayLorentzian : {
@@ -48,9 +48,9 @@ spectralData = {
 			amplitudes: [1],
 		}
   };*/
-    import { initializeSettings } from "../external/nmrSpectrum.js";
-    import { NmrSpectrum } from "../external/nmrSpectrum.js";
-    import { createSVG } from "../external/nmrSpectrum.js";
+    import { initializeSettings } from "./src/nmrSpectrum.js";
+    import { NmrSpectrum } from "./src/nmrSpectrum.js";
+    import { createSVG } from "./src/nmrSpectrum.js";
 
     const settings = initializeSettings({});
     var svg = createSVG("my_dataviz", settings);

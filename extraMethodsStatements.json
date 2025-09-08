@@ -10,6 +10,7 @@
 	"jsLibraryView": [
 		{"repository":"CHEMeDATA/viewers-base", "fileName": "src/viewerBase.js"},
 		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrSpectrum.js", "include": "NmrSpectrum"},
+		{"repository":"CHEMeDATA/objects-base", "fileName": "src/objectBase.js", "include": "ObjectBase"},
 		{"repository":"CHEMeDATA/nmr-objects", "fileName": "src/nmrSpectrumObject.js", "include": "NMRspectrumObject"}
 	],
 	"listObjectSchema": [ 
