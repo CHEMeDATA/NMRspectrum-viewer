@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <h4>Mnova json demonstration page</h4>
+  <p>This page reads the json serialization of Mnova document and uses JSmol and CHEMeDATA viewers for their
+    visualization.</p>
+  <style>
+    .code-box {
+      background: #f4f4f4;
+      padding: 10px;
+      font-family: monospace;
+    }
+  </style>
+
+  <div id="my_dataviz" style="width: 100%; height: auto;">
+  <script type="module">
+
+    import { NMRspectrumObject } from "../src/NMRspectrumObject.js";
+
+   const nMRspectraObjects = [
+   new NMRspectrumObject({demo : {arrayLorentzian : {
+			centers: [7.27, 5.0, 0.0],
+			widthsInHz: [0.7, 0.7, 0.7],
+			amplitudes: [1, 10, 1],
+		}}}), 
+    new NMRspectrumObject({demo : {
+    spectralData:{firstPoint:9}, 
+    arrayLorentzian:{centers:[3.8]}}
+    })
+    ]; 
+/* default value
+spectralData = {
+			pointNumber: 32768,
+			larmor: 500,
+			firstPoint: 11,
+			lastPoint: -1.0,
+			noiseLevel: 10,
+		},
+		arrayLorentzian = {
+			centers: [7.27],
+			widthsInHz: [0.7],
+			amplitudes: [1],
+		}
+  };*/
+    import { initializeSettings } from "../external/nmrSpectrum.js";
+    import { NmrSpectrum } from "../external/nmrSpectrum.js";
+    import { createSVG } from "../external/nmrSpectrum.js";
+
+    const settings = initializeSettings({});
+    var svg = createSVG("my_dataviz", settings);
+    var spectrum = new NmrSpectrum(
+      nMRspectraObjects,
+      svg,
+      settings,
+      settings.smallScreen
+    );
+    //const settings_with_spectrum_settings = spectrum.getSettings(); // if add assignement
+    /*
+    const classes = [spectrum];
+          classes.forEach((sender) => {
+            classes.forEach((receiver) => {
+              if (sender !== receiver) {
+                sender.getExportTypes().forEach((sendType) => {
+                  if (receiver.getImportTypes().includes(sendType)) {
+                    sender.registerReceiver(receiver, sendType);
+                  }
+                });
+              }
+            });
+          });
+    
+    */
+    //	spectrum.triggerSendAxis();
+
+  </script>
+  Brush horizontally to zoom and double-click to restore the full spectrum.
+
+</body>
+
+</html>

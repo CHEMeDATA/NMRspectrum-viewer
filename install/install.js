@@ -43,7 +43,7 @@ async function processLibraries() {
   const objects = data.listObject || [];
 
   for (const item of objects) {
-    for (const lib of item.jsLibrary) {
+    for (const lib of item.jsLibraryView) {
       const { repository, fileName } = lib;
 
       // Only download if mode=all OR repository differs from parent
