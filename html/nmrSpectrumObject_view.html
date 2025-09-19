@@ -8,8 +8,7 @@
 
 <body>
   <h4>Mnova json demonstration page</h4>
-  <p>This page reads the json serialization of Mnova document and uses JSmol and CHEMeDATA viewers for their
-    visualization.</p>
+  <p>This page creates NMR spectra from user data and uses the CHEMeDATA viewer for the visualization.</p>
   <style>
     .code-box {
       background: #f4f4f4;
@@ -18,13 +17,60 @@
     }
   </style>
 
-  <div id="my_dataviz" style="width: 100%; height: auto;">
+<div style="display: inline-block; text-align: justify;">
+		<div id="my_dataviz"></div>
+		<div style="font-size: 0.85em; color: #555; text-align: center;">
+      Figure 1: Viewer of a set of spectra simjlated from user-defined data (see below). Brush horizontally to zoom and double-click to restore the full spectrum.
+		</div>
+	</div>
+
+
+		<h3>Code of the page</h3>
+		<pre><code>
+import { NMRspectrumObject } from "./src/nmrSpectrumObject.js";
+import { initializeSettings } from "./src/nmrSpectrum.js";
+import { NmrSpectrum } from "./src/nmrSpectrum.js";
+import { createSVG } from "./src/nmrSpectrum.js";
+
+const nMRspectraObjects = [
+  new NMRspectrumObject({
+    demo : {
+      arrayLorentzian : {
+        centers: [7.27, 5.0, 0.0],
+        widthsInHz: [0.7, 0.7, 0.7],
+        amplitudes: [1, 10, 1],
+      }
+    }
+  }), 
+  new NMRspectrumObject({
+    demo : {
+      spectralData:{firstPoint:9}, 
+      arrayLorentzian:{centers:[3.8]}}
+  })
+]; 
+
+
+const settings = initializeSettings({});
+
+var svg = createSVG("my_dataviz", settings);
+
+var spectrum = new NmrSpectrum(
+  nMRspectraObjects,
+  svg,
+  settings,
+  settings.smallScreen
+);
+		</code></pre>
+	</div>
+
   <script type="module">
 
     import { NMRspectrumObject } from "./src/nmrSpectrumObject.js";
-
-   const nMRspectraObjects = [
-   new NMRspectrumObject({demo : {arrayLorentzian : {
+    import { initializeSettings } from "./src/nmrSpectrum.js";
+    import { NmrSpectrum } from "./src/nmrSpectrum.js";
+    import { createSVG } from "./src/nmrSpectrum.js";
+    const nMRspectraObjects = [
+    new NMRspectrumObject({demo : {arrayLorentzian : {
 			centers: [7.27, 5.0, 0.0],
 			widthsInHz: [0.7, 0.7, 0.7],
 			amplitudes: [1, 10, 1],
@@ -35,9 +81,7 @@
     })
     ]; 
 
-    import { initializeSettings } from "./src/nmrSpectrum.js";
-    import { NmrSpectrum } from "./src/nmrSpectrum.js";
-    import { createSVG } from "./src/nmrSpectrum.js";
+   
 
     const settings = initializeSettings({});
     var svg = createSVG("my_dataviz", settings);
@@ -66,7 +110,6 @@
     //	spectrum.triggerSendAxis();
 
   </script>
-  Brush horizontally to zoom and double-click to restore the full spectrum.
 
 </body>
 
